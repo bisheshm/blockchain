@@ -8,7 +8,7 @@ import datetime as date
 node = Flask(__name__)
 
 
-# Define what a Snakecoin block is
+# Define what a block is
 class Block:
     def __init__(self, index, timestamp, data, previous_hash):
         self.index = index
@@ -178,6 +178,6 @@ def mine():
       "hash": last_block_hash
   }) + "\n"
 
-
-node.run('192.168.1.111')
+#Enter your IP address
+node.run('0.0.0.0')
 
