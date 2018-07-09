@@ -1,0 +1,28 @@
+<head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<h2 align="center"; style="color:#124191">Make a Transaction</h2>
+<br>
+<form method="POST" align="center">
+      <label>Who would you like to send coins to? &ensp;</label><select name = "myList4">
+        <option value = "1">1</option>
+        <option value = "2">2</option>
+        <option value = "3">3</option>
+        <option value = "5">5</option>
+      </select>
+      <br>
+      <br>
+      <label>Amount:&ensp;</label> <input type="number" name="amount"><br>
+      <br>
+      <input class="btn btn-primary" type = "submit" value="Submit"><br>
+</form>
+</body>
+<br>
+<br>
+<center><img  src="https://www.sdxcentral.com/wp-content/uploads/2018/01/5G_Nokia.png" width="150" height="200" align="center"></img></center>
+<br>
+<br>
+<h3 align="center"; style="color:#124191">Name: {{ username4 }}</h3>
+<h3 align="center"; style="color:#124191">Coins: {{ currentCoins4 }}</h3>
+<h3 align="center"; style="color:#124191">Account ID: {{ accountID4 }}</h3>
