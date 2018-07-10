@@ -13,7 +13,7 @@ IPaddress = '192.168.1.111'
 #IPaddress = '192.168.1.253'
 
 
-# Define what a Snakecoin block is
+# Define what a block is
 class Block:
     def __init__(self, index, timestamp, data, previous_hash):
         self.index = index
@@ -50,24 +50,31 @@ this_nodes_transactions = []
 peer_nodes = []
 # A variable to deciding if we're mining or not
 mining = True
+
+# Usernames
 username = ''
 username1 = ''
 username2 = ''
 username3 = ''
 username4 = ''
 username5 = ''
+
+# Account IDs
 accountID = ''
 accountID1 = ''
 accountID2 = ''
 accountID3 = ''
 accountID4 = ''
 accountID5 = ''
+
+# Each user will start with 50 coins
 currentCoins1 = 50
 currentCoins2 = 50
 currentCoins3 = 50
 currentCoins4 = 50
 currentCoins5 = 50
 
+# Signup Page
 @node.route('/signup', methods=['GET','POST'])
 def signup():
     if request.method == 'POST':
