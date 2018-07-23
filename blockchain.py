@@ -8,10 +8,10 @@ import winsound
 
 node = Flask(__name__)
 
-IPaddress = '192.168.1.111'
-#IPaddress = '10.138.111.250'
+#IPaddress = '192.168.1.111'
+IPaddress = '10.138.111.250'
 #IPaddress = '192.168.1.253'
-
+#IPaddress = '192.168.1.100'
 
 # Define what a block is
 class Block:
@@ -50,31 +50,24 @@ this_nodes_transactions = []
 peer_nodes = []
 # A variable to deciding if we're mining or not
 mining = True
-
-# Usernames
 username = ''
 username1 = ''
 username2 = ''
 username3 = ''
 username4 = ''
 username5 = ''
-
-# Account IDs
 accountID = ''
 accountID1 = ''
 accountID2 = ''
 accountID3 = ''
 accountID4 = ''
 accountID5 = ''
+currentCoins1 = 500
+currentCoins2 = 500
+currentCoins3 = 500
+currentCoins4 = 500
+currentCoins5 = 500
 
-# Each user will start with 50 coins
-currentCoins1 = 50
-currentCoins2 = 50
-currentCoins3 = 50
-currentCoins4 = 50
-currentCoins5 = 50
-
-# Signup Page
 @node.route('/signup', methods=['GET','POST'])
 def signup():
     if request.method == 'POST':
@@ -92,27 +85,27 @@ def signup():
         global accountID5
         accountID = str(request.form['myList'])
         username = str(request.form['name'])
-        if accountID == '1':
+        if accountID == 'Nokia':
             username1 = username
             accountID1 = accountID
-        if accountID == '2':
+        if accountID == 'User2':
             username2 = username
             accountID2 = accountID
-        if accountID == '3':
+        if accountID == 'User3':
             username3 = username
             accountID3 = accountID
-        if accountID == '4':
+        if accountID == 'User4':
             username4 = username
             accountID4 = accountID
-        if accountID == '5':
+        if accountID == 'User5':
             username5 = username
             accountID5 = accountID
-        return redirect('http://'+IPaddress+':5000/txion'+accountID)
+        return redirect('http://' + IPaddress + ':5000/txion' +accountID)
 
     return render_template('signup.html')
 
 
-@node.route('/txion1', methods=['GET','POST'])
+@node.route('/txionNokia', methods=['GET','POST'])
 def transaction():
     if request.method == 'POST':  # this block is only entered when the form is submitted
         this_nodes_transactions.append(request.form.get('amount'))
@@ -129,25 +122,26 @@ def transaction():
         addedCoins5 = 0
         coinAmount = int(request.form['amount'])
         currentCoins1 = currentCoins1 - coinAmount
-        userTo = int(request.form['myList1'])
-        if userTo == 2:
+        userTo = str(request.form['myList1'])
+        if userTo == 'User2':
             addedCoins2 = coinAmount
             currentCoins2 = currentCoins2+addedCoins2
-        if userTo == 3:
+        if userTo == 'User3':
             addedCoins3 = coinAmount
             currentCoins3 = currentCoins3+addedCoins3
-        if userTo == 4:
+        if userTo == 'User4':
             addedCoins4 = coinAmount
             currentCoins4 = currentCoins4+addedCoins4
-        if userTo == 5:
+        if userTo == 'User5':
             addedCoins5 = coinAmount
             currentCoins5 = currentCoins5+addedCoins5
-        return redirect('http://'+IPaddress+':5000/txion1')
+        #return redirect('http://' + IPaddress + ':5000/txionNokia')
+        return render_template('successful.html')
 
     return render_template('txion1.html', username1=username1, currentCoins1=currentCoins1, accountID1=accountID1)
 
 
-@node.route('/txion2', methods=['GET','POST'])
+@node.route('/txionUser2', methods=['GET','POST'])
 def transaction2():
     if request.method == 'POST':  # this block is only entered when the form is submitted
         this_nodes_transactions.append(request.form.get('amount'))
@@ -164,25 +158,25 @@ def transaction2():
         addedCoins5 = 0
         coinAmount = int(request.form['amount'])
         currentCoins2 = currentCoins2 - coinAmount
-        userTo = int(request.form['myList2'])
-        if userTo == 1:
+        userTo = str(request.form['myList2'])
+        if userTo == 'Nokia':
             addedCoins1 = coinAmount
             currentCoins1 = currentCoins1+addedCoins1
-        if userTo == 3:
+        if userTo == 'User3':
             addedCoins3 = coinAmount
             currentCoins3 = currentCoins3+addedCoins3
-        if userTo == 4:
+        if userTo == 'User4':
             addedCoins4 = coinAmount
             currentCoins4 = currentCoins4+addedCoins4
-        if userTo == 5:
+        if userTo == 'User5':
             addedCoins5 = coinAmount
             currentCoins5 = currentCoins5+addedCoins5
-        return redirect('http://'+IPaddress+':5000/txion2')
+        return render_template('successful.html')
 
     return render_template('txion2.html', username2=username2, currentCoins2=currentCoins2, accountID2=accountID2)
 
 
-@node.route('/txion3', methods=['GET','POST'])
+@node.route('/txionUser3', methods=['GET','POST'])
 def transaction3():
     if request.method == 'POST':  # this block is only entered when the form is submitted
         this_nodes_transactions.append(request.form.get('amount'))
@@ -199,25 +193,25 @@ def transaction3():
         addedCoins5 = 0
         coinAmount = int(request.form['amount'])
         currentCoins3 = currentCoins3 - coinAmount
-        userTo = int(request.form['myList3'])
-        if userTo == 1:
+        userTo = str(request.form['myList3'])
+        if userTo == 'Nokia':
             addedCoins1 = coinAmount
             currentCoins1 = currentCoins1+addedCoins1
-        if userTo == 2:
+        if userTo == 'User2':
             addedCoins2 = coinAmount
             currentCoins2 = currentCoins2+addedCoins2
-        if userTo == 4:
+        if userTo == 'User4':
             addedCoins4 = coinAmount
             currentCoins4 = currentCoins4+addedCoins4
-        if userTo == 5:
+        if userTo == 'User5':
             addedCoins5 = coinAmount
             currentCoins5 = currentCoins5+addedCoins5
-        return redirect('http://'+IPaddress+':5000/txion3')
+        return render_template('successful.html')
 
     return render_template('txion3.html', username3=username3, currentCoins3=currentCoins3, accountID3=accountID3)
 
 
-@node.route('/txion4', methods=['GET','POST'])
+@node.route('/txionUser4', methods=['GET','POST'])
 def transaction4():
     if request.method == 'POST':  # this block is only entered when the form is submitted
         this_nodes_transactions.append(request.form.get('amount'))
@@ -234,25 +228,25 @@ def transaction4():
         addedCoins5 = 0
         coinAmount = int(request.form['amount'])
         currentCoins4 = currentCoins4 - coinAmount
-        userTo = int(request.form['myList4'])
-        if userTo == 1:
+        userTo = str(request.form['myList4'])
+        if userTo == 'Nokia':
             addedCoins1 = coinAmount
             currentCoins1 = currentCoins1+addedCoins1
-        if userTo == 2:
+        if userTo == 'User2':
             addedCoins2 = coinAmount
             currentCoins2 = currentCoins2+addedCoins2
-        if userTo == 3:
+        if userTo == 'User3':
             addedCoins3 = coinAmount
             currentCoins3 = currentCoins3+addedCoins3
-        if userTo == 5:
+        if userTo == 'User5':
             addedCoins5 = coinAmount
             currentCoins5 = currentCoins5+addedCoins5
-        return redirect('http://'+IPaddress+':5000/txion4')
+        return render_template('successful.html')
 
     return render_template('txion4.html', username4=username4, currentCoins4=currentCoins4, accountID4=accountID4)
 
 
-@node.route('/txion5', methods=['GET','POST'])
+@node.route('/txionUser5', methods=['GET','POST'])
 def transaction5():
     if request.method == 'POST':  # this block is only entered when the form is submitted
         this_nodes_transactions.append(request.form.get('amount'))
@@ -269,20 +263,20 @@ def transaction5():
         addedCoins4 = 0
         coinAmount = int(request.form['amount'])
         currentCoins5 = currentCoins5 - coinAmount
-        userTo = int(request.form['myList5'])
-        if userTo == 1:
+        userTo = str(request.form['myList5'])
+        if userTo == 'Nokia':
             addedCoins1 = coinAmount
             currentCoins1 = currentCoins1+addedCoins1
-        if userTo == 2:
+        if userTo == 'User2':
             addedCoins2 = coinAmount
             currentCoins2 = currentCoins2+addedCoins2
-        if userTo == 3:
+        if userTo == 'User3':
             addedCoins3 = coinAmount
             currentCoins3 = currentCoins3+addedCoins3
-        if userTo == 4:
+        if userTo == 'User4':
             addedCoins4 = coinAmount
             currentCoins4 = currentCoins4+addedCoins4
-        return redirect('http://'+IPaddress+':5000/txion5')
+        return render_template('successful.html')
 
     return render_template('txion5.html', username5=username5, currentCoins5=currentCoins5, accountID5=accountID5)
 
@@ -397,7 +391,7 @@ def mine():
   }) + "\n"
 
 
-node.run('192.168.1.111')
-#node.run('10.138.111.250')
+#node.run('192.168.1.111')
+node.run('10.138.111.250')
 #node.run('192.168.1.253')
-
+#node.run('192.168.1.100')
