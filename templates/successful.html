@@ -7,7 +7,7 @@
 <h1 style=font-size:60px;color:#124191; align="center";>Transaction Successful</h1>
 <br>
 <form align="center">
-  <input type="button" value="Make another transaction" onclick="window.history.back()" class="btn btn-primary" style="width:380px;height:75px;text-align=center;font-size:30px"/>
+  <input type="button" value="Make another transaction" onclick="location.href = document.referrer; return false;" class="btn btn-primary" style="width:380px;height:75px;text-align=center;font-size:30px"/>
 </form>
 
 </body>
